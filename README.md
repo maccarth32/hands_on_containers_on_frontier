@@ -391,7 +391,7 @@ In this section, we walk through the steps to access, build, customize and run A
 We focus on AI applications since these have a wider user base and usage on Frontier. 
 Specifically, we walk through the process of building, customizing and running the AMD DockerHub Tensorflow images on Frontier.   
 
-# Accessing, Building and Running AMD DockerHub Images on Frontier. 
+## Accessing, Building and Running AMD DockerHub Images on Frontier. 
 For this example, we use Tensorflow images from the AMD DockerHub repository. 
 These are located at [rocm/tensorflow](https://hub.docker.com/r/rocm/tensorflow). 
 To build and run the AMD DockerHub Tensorflow image on Frontier, go to the `olcf_container_examples` 
