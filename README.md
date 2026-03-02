@@ -436,6 +436,8 @@ The `tf.distribute.MultiWorkerMirroredStrategy` API is used in this multi-node d
 and the `TF_CONFIG` configuration is defined within the `submit.sbatch` script with two `workers`. 
 
 
+**Pause for exercise:** Navigate to `exercises/5_amddockerhubai` and complete the
+exercise where you will build an AMD Jax container and use it in running a Gaussian process regression. 
 
 # Resources
 
