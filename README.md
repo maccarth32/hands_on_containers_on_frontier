@@ -450,6 +450,47 @@ and the `TF_CONFIG` configuration is defined within the `submit.sbatch` script w
 **Pause for exercise:** Navigate to `exercises/5_amddockerhubai` and complete the
 exercise where you will build an AMD Jax container and use it in running a Gaussian process regression. 
 
+
+## Running on Multiple Systems
+
+Sometimes there are reasons that you may want to run a single workflow
+on multiple machines, either here at the OLCF or at other user facilities.
+As we have shown previously we can run on Frontier by binding in the host MPI
+libraries; however, we can also run using the MPI packaged in the container
+itself.
+
+For this example we will show how to run a single LAMMPS container on Frontier and Andes.
+LAMMPS is a classical molecular dynamics simulation code focusing on materials modeling.
+To run on Frontier and Andes with the same MPI requires building with support
+for the Infiniband (Andes) and Slingshot (Frontier) network fabrics.
+To do this, we build MPICH in a container with the `ucx` and `libfabric` netmods enabled.
+
+To build our MPI container we will use a custom OLCF tool
+[Velocity](https://olcf.github.io/velocity/).
+We use this tool to build our base container images that we explained before.
+You can use the steps below to build the image for this example or pull the prebuilt image 
+from `savannah.ornl.gov/olcf-container-images/main:mpich_cpu_ubuntu`.
+
+``` bash
+module load miniforge3  # we need python >= 3.10
+# (optional) setup a python virtual environment
+python3 -m venv myenv
+source myenv/bin/activate
+# install velocity
+pip install olcf-velocity
+alias velocity="python3 -m velocity"
+# clone the OLCF image definitions
+git clone https://github.com/olcf/velocity-images.git
+# configure velocity
+export VELOCITY_IMAGE_PATH=$(realpath ./velocity-images)
+# build image
+velocity build mpich libfabric ucx gcc@0 cxi@12 -n mpich
+```
+Next we need to build LAMMPS. The script to do this can be found in `examples/6_multiple_systems/`.
+Then you can use the provided submit scripts to run the same container on
+Frontier and Andes (be sure to set your account properly in the batch scripts).
+
+
 # Resources
 
 - Apptainer documentation: https://apptainer.org/docs/user/main/index.html
