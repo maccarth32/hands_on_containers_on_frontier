@@ -1,5 +1,5 @@
 Bootstrap: localimage 
-From: /lustre/orion/stf007/scratch/subil/containerstuff/apptainer/container_tests/frontier/containers/opensusempich342rocm624.sif 
+From: /lustre/orion/stf007/world-shared/subil/hands_on_containers_on_frontier_resources/opensusempich342rocm624.sif 
 
 %files
 checkldlibs.sh /
