@@ -90,6 +90,41 @@ To start a container and execute a command within it, use `apptainer exec`
 apptainer exec opensuse.sif gcc --version
 ```
 
+## Definition file (.def) quick reference
+
+Apptainer images can be built from 'definition files' with the extension `.def`. 
+
+Let's look through the basic sections through an example.
+
+You can find much greater detail in the [official
+documentation](https://apptainer.org/docs/user/latest/definition_files.html)
+
+```
+Bootstrap: docker
+From: docker.io/opensuse/leap:15.6
+
+%files
+./file1 /opt/file1
+
+%environment
+export C_SET=true
+
+%post
+zypper --non-interactive --gpg-auto-import-keys refresh
+zypper install -y  gzip gcc-c++ gcc-fortran hostname
+```
+
+* `Bootstrap:` specifies the way in which the base image is retrieved (see different examples in the
+  next section)
+* `From:` specifies the base image
+* `%files` specifies the files to copy from the host into the container image. 
+* `%environment` specifies the additional environment variables that will be set when the image is
+  running as a container.
+* `%post` specifies the commands to run to build up the image. This includes package installs,
+  compiling your application, cleaning up extraneous files etc. You can treat this like writing a
+  normal bash script.
+
+
 
 ## To build container image from .def files
 
