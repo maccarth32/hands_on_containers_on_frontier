@@ -121,7 +121,8 @@ zypper install -y  gzip gcc-c++ gcc-fortran hostname
 * `%environment` specifies the additional environment variables that will be set when the image is
   running as a container.
 * `%post` specifies the commands to run to build up the image. This includes package installs,
-  compiling your application, cleaning up extraneous files etc.
+  compiling your application, cleaning up extraneous files etc. You can treat this like writing a
+  normal bash script.
 
 
 
