@@ -202,7 +202,7 @@ Clone the `olcf_container_examples` repository
 
 ```
 git clone https://github.com/olcf/olcf_containers_examples
-cd olcf_container_examples/frontier/containers_on_frontier_docs/gpu_aware_mpi_example
+cd olcf_containers_examples/frontier/containers_on_frontier_docs/gpu_aware_mpi_example
 ```
 
 
@@ -244,7 +244,7 @@ variables being set up. You will notice that the environment variables use a pre
 `APPTAINER_WRAPPER` instead of the normal `APPTAINER` or `APPTAINERENV` prefixes 
 we saw in the `submit.sbatch` in the previous section. The modules we loaded sets up an 
 apptainer wrapper (see 
-`/sw/frontier/olcf-container-tools/apptainer-wrappers/bin/bash/apptainer`) which will
+`/sw/frontier/olcf-container-tools/apptainer-wrappers/bin/bash/apptainer`) 
 which will append the `APPTAINER_WRAPPER*` environment variables to the correct
 `APPTAINER*` and `APPTAINERENV*` environment variables. This wrapper makes it so that
 you can define values for the `APPTAINER*` or `APPTAINERENV*` environment variables 
@@ -273,8 +273,8 @@ apptainer build lammps.sif lammps.def
 `lammps.sif` pulls one of the OLCF base images (which we'll talk about in the next section)
 and builds a container with LAMMPS installed in it.
 
-(To save you some time, copy the `lammps.sif` from
-`/lustre/orion/stf007/world-shared/subil/hands_on_containers_on_frontier_resources`).
+(To save you some time, copy the prebuilt image from
+`cp /lustre/orion/stf007/world-shared/subil/hands_on_containers_on_frontier_resources/lammps.sif .`).
 
 Open the `submit.slurm` to see how we load the modules and run LAMMPS with the
 container.  Try submitting the job and see it work.
@@ -284,9 +284,11 @@ container. They should not be loaded during build. This is because
 `APPTAINER_BINDPATH` environment variable which is set by one of the modules is
 read by the `apptainer build` command, and will cause the build to fail with an
 error message like
+
 ```
 FATAL:   container creation failed: mount hook function failure: mount /opt/cray->/opt/cray error: while mounting /opt/cray: destination /opt/cray doesn't exist in container
 ```
+
 `apptainer exec` is able to automatically create directories in the container
 to mount the host directories listed in `APPTAINER_BINDPATH`, but that is not
 done during `apptainer build` hence error.
@@ -359,7 +361,7 @@ cd examples/4_multistagebuild
 The `lammps.def` file in this directory should look familiar. It's the image that we built
 in one of the earlier sections. Compare the `lammps.def` file with the `lammpsmultistagesimple.def`.
 In `lammpsmultistagesimple.def` we see how we have two "Stages", one named 'devel' and one named 
-'final'. The `'devel' stage is the same as what we saw before. The 'final' stage uses the same base
+'final'. The 'devel' stage is the same as what we saw before. The 'final' stage uses the same base
 image in the `From:` directive as the 'devel' stage, and then copies the `lmp` executable from the 
 'devel' stage to the 'final' stage. The container image created in the 'final' stage is what is 
 saved at the end of the build. The container image created in the 'devel' stage isn't saved.
@@ -369,7 +371,7 @@ There's no big difference in size between the container images created from `lam
 and runtime libraries. 
 
 Now compare `lammpsmultistagesimple.def` and `lammpsmultistagecomplex.def`. Here, in the 'final' stage we
-are using just `ubuntu:22.04` as our base which is a lot smaller in size than the OLCF base image.
+are using just `ubuntu:24.04` as our base which is a lot smaller in size than the OLCF base image.
 And because we don't have all the runtime libraries that we need in this ubuntu image, we have 
 to copy a bunch of them from the 'devel' stage into the 'final' stage to a location where your
 application (which you are also copying into the 'final' stage) can discover them at runtime.
