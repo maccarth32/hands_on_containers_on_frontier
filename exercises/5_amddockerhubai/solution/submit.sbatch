@@ -22,9 +22,10 @@ module load craype-accel-amd-gfx90a
 
 #cloning Jax repo for gaussian_process_regression example
 git clone https://github.com/jax-ml/jax.git
+cd jax/examples
 
 set -ex
 echo "About to Run Apptainer Exec"
 
 #Run Script 
-time srun -N4 -n32 --tasks-per-node=8 -c7 --gpus-per-task=1 --gpu-bind=closest apptainer exec --workdir `pwd` jax_latest.sif  ./pyrun_gaussian_regression.sh
+time srun -N4 -n32 --tasks-per-node=8 -c7 --gpus-per-task=1 --gpu-bind=closest apptainer exec --workdir `pwd` ../../jax_latest.sif  ../../pyrun_gaussian_regression.sh
