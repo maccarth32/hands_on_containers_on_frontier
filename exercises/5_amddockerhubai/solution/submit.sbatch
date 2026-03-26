@@ -6,7 +6,7 @@
 #SBATCH -t 00:30:00
 #SBATCH -p batch
 #SBATCH -N 4
-#SBATCH --reservation=container_training
+# #SBATCH --reservation=container_training
 
 export all_proxy=socks://proxy.ccs.ornl.gov:3128/
 export ftp_proxy=ftp://proxy.ccs.ornl.gov:3128/
