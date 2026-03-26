@@ -23,7 +23,6 @@ module load craype-accel-amd-gfx90a
 
 #cloning Jax repo for gaussian_process_regression example
 git clone https://github.com/jax-ml/jax.git
-cd jax/examples
 
 set -ex
 echo "About to Run Apptainer Exec"
