@@ -487,7 +487,7 @@ and the `TF_CONFIG` configuration is defined within the `submit.sbatch` script w
 
 
 **Pause for exercise:** Navigate to `exercises/5_amddockerhubai` and complete the
-exercise where you will build an AMD Jax container and use it in running a Gaussian process regression. 
+exercise where you will build an AMD Jax container and use it in running an mnist classifier. 
 
 ## PyTorch Exercise
 Containers via Apptainer can also be used to aid you in building and deploying PyTorch applications across Frontier.
