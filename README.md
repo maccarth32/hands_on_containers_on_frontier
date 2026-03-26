@@ -2,6 +2,8 @@ This repository is to accompany the March 26 2026 Container training. This tutor
 is mostly standalone and can be used independent of the training.
 
 # Follow along
+For the March 26 2026 training, we have a reservation on Frontier. Use `#SBATCH --reservation container_training` in 
+your job script.
 
 ## NOTE
 If you find yourself encountering an error that looks like the below
