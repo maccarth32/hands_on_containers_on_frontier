@@ -28,4 +28,4 @@ set -ex
 echo "About to Run Apptainer Exec"
 
 #Run Script 
-time srun -N4 -n32 --tasks-per-node=8 -c7 --gpus-per-task=1 --gpu-bind=closest apptainer exec --workdir `pwd` ../../jax_latest.sif  ../../pyrun_mnist.sh
+time srun -N4 -n32 --tasks-per-node=8 -c7 --gpus-per-task=1 --gpu-bind=closest apptainer exec --workdir `pwd` jax_latest.sif  ./pyrun_mnist.sh
