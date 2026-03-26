@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#SBATCH -A gen107
+#SBATCH -A stf007
 #SBATCH -J osubench_exercise
 #SBATCH -o %j.out
 #SBATCH -N 2

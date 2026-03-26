@@ -12,5 +12,5 @@ module load olcf-container-tools
 module load apptainer-enable-mpi apptainer-enable-gpu
 
 
-srun  -N1 -n1 apptainer exec  --rocm osubench.sif ldd /osu_allgather 
-srun  -N2 -n8 --tasks-per-node 4 apptainer exec  --rocm osubench.sif /osu_allgather -d rocm
+srun  -N1 -n1 apptainer exec  --rocm osubench.sif ldd /opt/osu_allgather 
+srun  -N2 -n8 --tasks-per-node 4 apptainer exec  --rocm osubench.sif /opt/osu_allgather -d rocm

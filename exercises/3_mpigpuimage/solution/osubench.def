@@ -1,5 +1,5 @@
 Bootstrap: docker 
-From: savannah.ornl.gov/olcf-container-images/cpe:25.03_gnu_ubuntu
+From: savannah.ornl.gov/olcf-container-images/cpe:24.11_gnu_ubuntu
 
 %post
 
